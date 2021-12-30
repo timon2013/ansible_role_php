@@ -1,0 +1,6 @@
+---
+- name: "Ensure php-fpm is started and enabled at boot."
+  systemd:
+    name: php-fpm
+    state: started
+    enabled: yes

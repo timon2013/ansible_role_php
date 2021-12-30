@@ -1,0 +1,25 @@
+---
+- name: Install remi repository
+  dnf:
+    name: https://rpms.remirepo.net/enterprise/remi-release-8.rpm
+    state: present
+#remi-7.2                                       common [d], devel, minimal                                       PHP scripting language                                      
+#php                                         remi-7.3                                       common [d], devel, minimal                                       PHP scripting language                                      
+#php                                         remi-7.4                                       common [d], devel, minimal                                       PHP scripting language                                      
+#php                                         remi-8.0 
+- name: Enable dnf module
+  shell: dnf module enable php:remi-7.4 -y
+
+- name: Install packages
+  dnf:
+    #name: "{{ item }}"
+    name: "{{ redhat_php_package }}"
+    state: present
+  #loop: "{{ redhat_php_package }}"
+
+- name: Install packages - redhat_php_package_wordpress
+  dnf:
+    #name: "{{ item }}"
+    name: "{{ redhat_php_package_wordpress }}"
+    state: present
+  #loop: "{{ redhat_php_package_wordpress }}"
